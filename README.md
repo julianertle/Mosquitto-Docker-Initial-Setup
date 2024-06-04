@@ -22,8 +22,8 @@ Before you begin, make sure you have Docker and Docker Compose installed on your
 Navigate to the repository directory:
 
     cd <repository-directory>
-
-Start the MQTT broker in a terminal using Docker Compose:
+Start your docker instance.
+Now start the MQTT broker in a terminal using Docker Compose:
 
     docker-compose up -d
 
