@@ -1,51 +1,40 @@
-MQTT Broker with Eclipse Mosquitto
 
-This repository contains a Docker Compose configuration to run an MQTT broker using Eclipse Mosquitto.
-Getting Started
+# README
 
-To get started with this MQTT broker, follow these steps:
-Prerequisites
+### MQTT Broker with Eclipse Mosquitto
+
+This repository contains a Docker Compose configuration to run an MQTT broker using Eclipse Mosquitto on your **local machine**.
+
+**Getting Started:**
 
 Before you begin, make sure you have Docker and Docker Compose installed on your system.
 
-    Docker installation guide: Install Docker
-    Docker Compose installation guide: Install Docker Compose
+    Install Docker
+    Install Docker Compose
 
-Usage
+**Usage**
 
-    Clone this repository to your local machine:
+    Clone this repository to your local machine, you can use Visual Studio Code for that:
+    
+    git clone https://github.com/julianertle/Mosquitto-Docker-Initial-Setup.git
 
-    bash
-
-git clone [<repository-url>](https://github.com/julianertle/Mosquitto-Docker-Initial-Setup.git)
 
 Navigate to the repository directory:
 
+    cd <repository-directory>
 
-cd <repository-directory>
-
-Start the MQTT broker using Docker Compose:
-
-bash
+Start the MQTT broker in a terminal using Docker Compose:
 
     docker-compose up -d
 
-    This command will start the MQTT broker container in detached mode, allowing it to run in the background.
+You can now connect to the MQTT broker using the specified port (default is 1883) from your MQTT clients.
 
-    You can now connect to the MQTT broker using the specified port (default is 1883) from your MQTT clients.
+Open another terminal and subscribe to your broker:
 
-Configuration Options
+    docker-compose exec mosquitto mosquitto_sub -h localhost -p 1883 -t test/topic
 
-    Anonymous Access: By default, anonymous access is allowed. You can modify this behavior in the mosquitto.conf file.
+Open one more terminal and publish a message to the broker: 
 
-    Persistence: Persistence information on client subscriptions and retained messages is enabled by default. You can modify the persistence settings in the mosquitto.conf file.
+    docker-compose exec mosquitto mosquitto_pub -h localhost -p 1883 -t test/topic -m "Hello World" 
 
-Accessing Logs and Data
 
-    Logs: Log files are stored in the log directory.
-
-    Data: Persistent data, including the MQTT database (mosquitto.db), is stored in the data directory.
-
-Contributing
-
-Contributions are welcome! If you have suggestions, feature requests, or find any issues, please open an issue or create a pull request.
